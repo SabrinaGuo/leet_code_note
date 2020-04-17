@@ -6,9 +6,9 @@ Given an array of integers, return indices of the two numbers such that they add
 <br/>
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
-有一個整數的陣列，將兩數相加為一個特定目標。
+有一個整數的陣列，將兩數相加為一個特定數字(target)。
 <br/>
-你可以假設每個輸入都只有一個解決方案，並且你可能不會兩次使用同一元素。
+你可以假設輸入任一種數字都會有一個正確的解法，兩數相加的數字不可使用同一個。
 <br/>
 
 ##### Example 1:
