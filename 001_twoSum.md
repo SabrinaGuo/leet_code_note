@@ -77,6 +77,22 @@ var twoSum = function(nums, target) {
 };
 
 ```
+
+```js
+
+var twoSum = function(nums, target) {
+    var obj = {};
+    for(var i=0;i<nums.length; i++) {
+        if(typeof obj[nums[i]] == 'number')
+        {
+            return [obj[nums[i]], i]
+        }
+        obj[target - nums[i]] = i;
+    }
+     return null
+};
+
+```
 * * *
 ### Note
 (有則填 無則跳過)
