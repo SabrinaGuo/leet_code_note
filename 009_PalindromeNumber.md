@@ -38,27 +38,60 @@ var isPalindrome = function(x) {
 ```
 * * *
 ### Thinking
-1. 
-2. 
+1. 切成字串後，比對第一個跟最後一個字串是否一致
+2. 不一致則false，一致則繼續進行直到結束
+3. 比對次數為for迴圈的循環次數，整串數字兩個兩個比對，所以除以2為比對次數
 
 * * *
 ### Submissions
 ```js
  
-    填入自己的答案
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+    var solution = x.toString().split('');
+    var last = (solution.length) -1 ;
+    var checkTime = Math.floor((solution.length) / 2);
+for( var i = 0; i<= checkTime ; i++){
+        if(solution[i] !== solution[last - i]){
+            return false;
+        }
+    }
+   return true;
+};
 
 ```
-###### Runtime: 60 ms
+###### Runtime: 188 ms
 * * *
 ### Solution
-###### 別人怎麼寫的? Runtime: 40 ms 的人的寫法
+###### 別人怎麼寫的? Runtime: 148 ms 的人的寫法
 >Thinking:
     <br/><br/>
-    填入你所找尋的答案思考方式
+     1. if(x<0 || isNaN(x)) return false; => 負數或是不為數字直接為false，不進行判斷。
+     2. 後面完全不懂 = =
     <br/><br/>
 ```js
 
-    填入對方的答案
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function(x) {
+    if(x<0 || isNaN(x)) return false;
+    
+    let reverse = 0;
+    const compare = x;
+    
+    while(x){
+        let rem = x%10;
+        reverse = reverse*10 + rem;
+        x= Math.floor(x/10);
+    }
+    
+    return compare == reverse ;
+};
 
 ```
 * * *

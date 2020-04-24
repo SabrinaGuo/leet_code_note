@@ -79,10 +79,13 @@ var reverse = function(x) {
 ###### Runtime: 68 ms Memory Usage: 35.9 MB
 * * *
 ### Solution
-###### 別人怎麼寫的? Runtime: 40 ms 的人的寫法
+###### 別人怎麼寫的? Runtime: 52 ms 的人的寫法
 >Thinking:
     <br/><br/>
-    填入你所找尋的答案思考方式
+    1. 找出極限數字
+    2. 使用 `Math.sign() `(此函数共有5种返回值, 分别是 1, -1, 0, -0, NaN) => 且 该函数的参数会被隐式轉換成数字型別
+    3. 將輸入的X 進行切割及反向
+    4. 若大於極限數字返回0，若無則將 n * k  以得到正(負)數
     <br/><br/>
 ```js
 
@@ -90,31 +93,27 @@ var reverse = function(x) {
  * @param {number} x
  * @return {number}
  */
-var reverse = function (x) {
-  let leftNum = Math.abs(x);
-  let res = '';
-  while (leftNum > 0) {
-    let digit = leftNum % 10;
-    res += digit + '';
-    leftNum = Math.floor(leftNum / 10);
-  }
-  const num = Number(res);
-
-  if (num < -1 * Math.pow(2, 31) || num > Math.pow(2, 31) - 1) {
-    return 0;
-  }
-
-  return x > 0 ? num : (-1 * num);
+var reverse = function(x) {
+    const limit = Math.pow(2,31) - 1;
+    const k = Math.sign(x);
+    const n = parseInt(Math.abs(x).toString().split('').reverse().join(''));
+    
+    return n > limit ? 0 : n * k;
 };
 
 ```
 * * *
 ### Note
-(有則填 無則跳過)
- 自己的筆記
+Math.sign() 可用於辨別參數是否為數字以及正數還負數
 
 ```js
-(有則填 無則跳過)
-對於自己筆記的js註解
+  Math.sign(3);     //  1
+  Math.sign(-3);    // -1
+  Math.sign("-3");  // -1
+  Math.sign(0);     //  0
+  Math.sign(-0);    // -0
+  Math.sign(NaN);   // NaN
+  Math.sign("foo"); // NaN
+  Math.sign();      // NaN
 
 ```
